@@ -1,0 +1,26 @@
+{
+  "name": "backend_markitdown",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "dev": "nodemon app.js",
+    "start": "node app.js"
+  },
+  "author": "Lalit",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.27.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "express-jwt": "^5.3.1",
+    "express-openid-connect": "^2.7.3",
+    "jwks-rsa": "^2.1.4",
+    "mongoose": "^6.4.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.18"
+  },
+  "proxy": "http://127.0.0.1:3000"
+}
