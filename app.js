@@ -30,7 +30,7 @@ mongoose.connect("mongodb+srv://Khulalit:Khulalit@markitdown.ewyfpbw.mongodb.net
 })
 .catch(err => console.log(err));
 app.use(cors({
-    origin: ["https://markitdownapp.netlify.app/"]
+    origin: ['https://markitdownapp.netlify.app']
 }))
 
 // auth router attaches /login, /logout, and /callback routes to the baseURL
