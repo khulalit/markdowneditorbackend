@@ -24,7 +24,7 @@ const verifyToken = jwt({
 
 const dbURI = process.env.DBURI;
 // mongodb
-mongoose.connect(dbURI,{useNewUrlParser : true, useUnifiedTopology : true})
+mongoose.connect("mongodb+srv://Khulalit:Khulalit@markitdown.ewyfpbw.mongodb.net/?retryWrites=true&w=majority",{useNewUrlParser : true, useUnifiedTopology : true})
 .then(result=>{
   console.log("Database connected ....")
 })
