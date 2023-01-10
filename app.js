@@ -129,13 +129,12 @@ app.post('/save',(req,res)=>{
             try {
                 
                 fid = succ.files[succ.files.length-1]._id
+                res.json({message:"File saved", fid:fid, error: false})
             } catch (error) {
                 res.json({message:"File saved", fid:fid, error:true})
             }
-            res.json({message:"File saved", fid:fid, error: false})
+           
         }
-    }).catch(err=>{
-        res.send(500)
     })
     
 });
