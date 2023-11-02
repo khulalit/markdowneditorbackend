@@ -29,9 +29,7 @@ mongoose.connect("mongodb+srv://Khulalit:Khulalit@markitdown.ewyfpbw.mongodb.net
   console.log("Database connected ....")
 })
 .catch(err => console.log(err));
-app.use(cors({
-    origin: ['*']
-}))
+app.use(cors());
 
 // auth router attaches /login, /logout, and /callback routes to the baseURL
 // use for body parsing
