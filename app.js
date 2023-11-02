@@ -30,7 +30,7 @@ mongoose.connect("mongodb+srv://Khulalit:Khulalit@markitdown.ewyfpbw.mongodb.net
 })
 .catch(err => console.log(err));
 app.use(cors({
-    origin: ['https://markitdownapp.netlify.app']
+    origin: ['https://markitdownapp.netlify.app', 'http://localhost:3000', 'https://markitdowneditor.netlify.app/']
 }))
 
 // auth router attaches /login, /logout, and /callback routes to the baseURL
@@ -57,23 +57,34 @@ app.get('/rename',(req,res)=>{
         res.sendStatus(200)
 })
 app.post('/update',(req,res)=>{
-    const fid = req.body.fid
-    const uid = req.body.sub
-    const file = {
-        content : "This is a file new"
+    const fid = req.body.fid;
+    if(!fid){
+        res.sendStatus(400).json({message: "fid cannot be empty."});
+        return;
+    } 
+
+    const content = req.body.content;
+    if(!content){
+        res.sendStatus(400).json({message: "content cannot be empty."});
+        return;
     }
+
+    let error;
     User.update(
     {   
         "files._id" : fid
     },{
         "$set" : {
-            "files.$.content" : req.body.content
+            "files.$.content" : content
         }
     }).then(res=>{
-        console.log(res)
+       
+    }).catch((err)=>{
+        console.log(err)
     })
-    res.json({message:"File updated", fid:fid})
-    // res.send({message : "/ route"})
+
+    res.json({message : 'File updated', fid: fid});
+    
 })
 app.post('/register',(req,res)=>{
     const uid = req.body.sub;
